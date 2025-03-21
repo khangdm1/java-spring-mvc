@@ -16,12 +16,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/admin/user")
     public String getHomePage(Model model) {
         String test = this.userService.handleHello();
         model.addAttribute("eric", test);
         model.addAttribute("hoidanit", "from controller with model");
-        return "hello";
+        return "create";
     }
 }
 
