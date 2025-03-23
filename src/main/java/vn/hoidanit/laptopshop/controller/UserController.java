@@ -27,7 +27,7 @@ public class UserController {
 
     @RequestMapping(value = "/admin/user/create1", method = RequestMethod.POST)
     public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit) {
-        System.out.println("info" + hoidanit);
+        this.userService.handleSaveUser(hoidanit);
         return "hello";
     }
 
