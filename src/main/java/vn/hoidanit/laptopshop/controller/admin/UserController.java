@@ -46,12 +46,12 @@ public class UserController {
         this.roleRepository = roleRepository;
     }
 
-    @RequestMapping("/")
-    public String getHomePage(Model model) {
-        String test = this.userService.handleHello();
-        model.addAttribute("newUser", new User());
-        return "hello";
-    }
+    // @GetMapping("/")
+    // public String getHomePage(Model model) {
+    // String test = this.userService.handleHello();
+    // model.addAttribute("newUser", new User());
+    // return "hello";
+    // }
 
     @RequestMapping("/admin/user")
     public String getUserPage(Model model) {
