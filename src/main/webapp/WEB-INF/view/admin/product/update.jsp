@@ -20,7 +20,11 @@
                     $(document).ready(() => {
                         const avatarFile = $("#avatarFile");
                         const orgImage = "${newProduct.image}";
-
+                        if (orgImage) {
+                            const urlImage = "/images/image/" + orgImage;
+                            $("#avatarPreview").attr("src", urlImage);
+                            $("#avatarPreview").css({ "display": "block" });
+                        }
 
                         avatarFile.change(function (e) {
                             const imgURL = URL.createObjectURL(e.target.files[0]);
