@@ -46,9 +46,12 @@
 
                                         <hr />
                                         <div class="card" style="width: 70%;">
-                                            <div>
-                                                <img src="/images/image/${product.image}" alt="">
-                                            </div>
+
+                                            <img style="width: 60%; height: 60%;" class="card-img-top"
+                                                src="/images/product/${product.image}" alt="">
+
+
+
                                             <div class="card-header">
                                                 Product information
                                             </div>

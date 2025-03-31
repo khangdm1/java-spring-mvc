@@ -21,7 +21,7 @@
                         const avatarFile = $("#avatarFile");
                         const orgImage = "${newProduct.image}";
                         if (orgImage) {
-                            const urlImage = "/images/image/" + orgImage;
+                            const urlImage = "/images/product/" + orgImage;
                             $("#avatarPreview").attr("src", urlImage);
                             $("#avatarPreview").css({ "display": "block" });
                         }
@@ -142,8 +142,7 @@
                                                         accept=".png, .jpg, .jpeg" name="hoidanitFile" />
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <img src="/images/image/${newProduct.image}"
-                                                        style="max-height: 250px; display: none;" alt="avatar preview"
+                                                    <img style="max-height: 250px; display: none;" alt="avatar preview"
                                                         id="avatarPreview" />
                                                 </div>
                                                 <div class="col-12 mb-5">

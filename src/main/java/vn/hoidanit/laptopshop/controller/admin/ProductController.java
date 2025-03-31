@@ -55,14 +55,13 @@ public class ProductController {
             @ModelAttribute("newProduct") @Valid Product product,
             BindingResult newProductBindingResult,
             @RequestParam("hoidanitFile") MultipartFile file) {
-        String image = this.uploadService.handleSaveUploadFile(file, "image");
-        product.setImage(image);
 
         // validate
         if (newProductBindingResult.hasErrors())
             return "admin/product/create";
 
-        // product.setRole(this.userService.getRoleByName(hoidanit.getRole().getName()));
+        String image = this.uploadService.handleSaveUploadFile(file, "product");
+        product.setImage(image);
 
         this.productService.handleSaveProduct(product);
         return "redirect:/admin/product";
@@ -90,15 +89,36 @@ public class ProductController {
             @ModelAttribute("newProduct") Product pr,
             @RequestParam("hoidanitFile") MultipartFile file) {
         Product currentPr = this.productService.getProductById(pr.getId());
+
         if (currentPr != null) {
+            // update new image
+
+            String img = this.uploadService.handleSaveUploadFile(file, "product");
+            currentPr.setImage(img);
+
             currentPr.setName(pr.getName());
+            currentPr.setPrice(pr.getPrice());
+            currentPr.setQuantity(pr.getQuantity());
             currentPr.setDetailDesc(pr.getDetailDesc());
             currentPr.setShortDesc(pr.getShortDesc());
-            String image = this.uploadService.handleSaveUploadFile(file, "image");
-            pr.setImage(image);
-            currentPr.setPrice(pr.getPrice());
+            currentPr.setFactory(pr.getFactory());
+            currentPr.setTarget(pr.getTarget());
             this.productService.handleSaveProduct(pr);
         }
+        return "redirect:/admin/product";
+    }
+
+    // delete product
+    @GetMapping("/admin/product/delete/{id}")
+    public String getDeleteProductPage(Model model, @PathVariable long id) {
+        model.addAttribute("id", id);
+        model.addAttribute("newProduct", new Product());
+        return "admin/product/delete";
+    }
+
+    @PostMapping("/admin/product/delete")
+    public String postDeleteProduct(Model model, @ModelAttribute("newProduct") Product pr) {
+        this.productService.deleteAProduct(pr.getId());
         return "redirect:/admin/product";
     }
 
