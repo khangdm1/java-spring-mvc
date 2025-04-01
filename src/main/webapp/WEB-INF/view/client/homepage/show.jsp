@@ -109,7 +109,11 @@
                                                                 style="top: 10px; left: 10px;">Laptop</div>
                                                             <div
                                                                 class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                                <h4 style="font-size: 15px;">${product.name}</h4>
+                                                                <h4 style="font-size: 15px;">
+                                                                    <a href="/product/detail/${product.id}">
+                                                                        ${product.name}
+                                                                    </a>
+                                                                </h4>
                                                                 <p style="font-size: 13px;">${product.shortDesc}</p>
                                                                 <div
                                                                     class="d-flex justify-content-between flex-lg-wrap">
