@@ -32,7 +32,7 @@
                                                         <div class="my-2" style="color: red;">Invalid email or password.
                                                         </div>
                                                     </c:if>
-                                                    <c:if test="${param.error != null}">
+                                                    <c:if test="${param.logout != null}">
                                                         <div class="my-2" style="color: green;">Logout success.
                                                         </div>
                                                     </c:if>
