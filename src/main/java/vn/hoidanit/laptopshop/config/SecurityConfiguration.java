@@ -69,14 +69,13 @@ public class SecurityConfiguration {
 
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
-                // .sessionManagement((sessionManagement) -> sessionManagement
-                // .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                // .invalidSessionUrl("/logout?expired")
-                // .maximumSessions(1)
-                // .maxSessionsPreventsLogin(false))
+                .sessionManagement((sessionManagement) -> sessionManagement
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                        .invalidSessionUrl("/logout?expired")
+                        .maximumSessions(1)
+                        .maxSessionsPreventsLogin(false))
 
-                // .logout(logout ->
-                // logout.deleteCookies("JSESSIONID").invalidateHttpSession(true))
+                .logout(logout -> logout.deleteCookies("JSESSIONID").invalidateHttpSession(true))
 
                 .rememberMe(r -> r.rememberMeServices(rememberMeServices()))
 
