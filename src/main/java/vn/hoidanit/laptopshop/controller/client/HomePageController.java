@@ -35,14 +35,6 @@ public class HomePageController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/")
-    public String getHomePage(Model model) {
-        List<Product> products = this.productService.getAllProduct();
-        model.addAttribute("products", products);
-
-        return "client/homepage/show";
-    }
-
     // register
     @GetMapping("/register")
     public String getRegisterPage(Model model) {
