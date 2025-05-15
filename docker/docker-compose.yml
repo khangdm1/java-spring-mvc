@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  app:
+    build: 
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: laptopshop-spring-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/laptopshop
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8
+    container_name: mysql-laptopshop
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: laptopshop
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
